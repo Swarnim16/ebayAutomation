@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="EBaySuite">
+<listeners>
+<listener class-name="test.java.Listeners"></listener>
+</listeners>
+<parameter name="appURL" value="https://www.ebay.com/"/>
+<parameter name="browserType" value="chrome"/>
+  <test thread-count="1" name="Test">
+    <classes>
+      <class name="test.java.BaseSetupUtility"/>
+      <class name="test.java.EbaySearchPageTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- EBaySuite -->

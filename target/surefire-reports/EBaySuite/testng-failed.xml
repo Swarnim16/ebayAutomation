@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [EBaySuite]">
+  <parameter name="appURL" value="https://www.ebay.com/"/>
+  <parameter name="browserType" value="chrome"/>
+  <listeners>
+    <listener class-name="test.java.Listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Test(failed)">
+    <classes>
+      <class name="test.java.EbaySearchPageTest">
+        <methods>
+          <include name="verifySearchFunctionTest"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="CheckProductDetailTest"/>
+          <include name="initializeTestBaseSetup"/>
+        </methods>
+      </class> <!-- test.java.EbaySearchPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [EBaySuite] -->

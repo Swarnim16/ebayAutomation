@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 70.963 s <<< FAILURE! - in TestSuite
+verifySearchFunctionTest(test.java.EbaySearchPageTest)  Time elapsed: 12.805 s  <<< FAILURE!
+java.lang.AssertionError: expected [true] but found [false]
+	at test.java.EbaySearchPageTest.verifySearchFunctionTest(EbaySearchPageTest.java:112)
+
+CheckProductDetailTest(test.java.EbaySearchPageTest)  Time elapsed: 11.203 s  <<< FAILURE!
+java.util.NoSuchElementException
+	at test.java.EbaySearchPageTest.CheckProductDetailTest(EbaySearchPageTest.java:265)
+
