@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -145,6 +146,8 @@ private WebDriver driver;
 		 List<WebElement> checkBox = driver.findElements(By.xpath("//input[@class='cbx x-refine__multi-select-checkbox ']"));
 		 {
 			 System.out.println(checkBox.size());
+			 if (checkBox.size() > 0)
+			 {
 			 for(int k=0; k<checkBox.size(); k++)
 			 {
 				 WebElement Cb= checkBox.get(k);
@@ -157,6 +160,20 @@ private WebDriver driver;
 				 }
 				 
 			 
+			 }
+			 }
+			 else
+			 {
+				 WebElement element=driver.findElement(By.linkText("50\" - 60\""));
+				 if (element.getText().isEmpty())
+				 {
+					 
+				 }
+				 else
+				 {
+					 System.out.println("Size "+element.getText());
+					 element.click();
+				 }
 			 }
 			 
 		 }
@@ -246,14 +263,30 @@ private WebDriver driver;
   				System.out.println("Item condition = Pass : "+ condition);
   				Assert.assertTrue(true);
   			}
+  			
+  			//String timeLeft= driver.findElement(By.id("vi-cdown_timeLeft")).getText();
+  			boolean timeLeftExists=true;
   			String name= driver.findElement(By.id("itemTitle")).getText();
-  			String timeLeft= driver.findElement(By.id("vi-cdown_timeLeft")).getText();
+  			//if (driver.findElement(By.id("vi-cdown_timeLeft"))condition.ex)
+  			try
+  			{
+  				String timeLeft= driver.findElement(By.id("vi-cdown_timeLeft")).getText();
+  				System.out.println("Item time left ="+ timeLeft);
+  				productObj.setProductTime(timeLeft);
+  				timeLeftExists=true;
+  				Assert.assertTrue(timeLeftExists);
+  			}
+  			catch(NoSuchElementException e)
+  			{
+  				timeLeftExists =false;
+  				Assert.assertTrue(timeLeftExists);
+  			}
   			String price= driver.findElement(By.id("prcIsum")).getText();
   			System.out.println("Item Details Name ="+ name);
-  			System.out.println("Item time left ="+ timeLeft);
+  			//System.out.println("Item time left ="+ timeLeft);
   			System.out.println("Item time price ="+ price);
   			productObj.setProductName(name);
-  			productObj.setProductTime(timeLeft);
+  			//productObj.setProductTime(timeLeft);
   			productObj.setProductPrice(price);
   			
   			//...Case
